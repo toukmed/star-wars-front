@@ -1,0 +1,65 @@
+.search-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 40px;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.search-field {
+  width: 100%;
+  max-width: 600px;
+
+}
+
+.table-container {
+  padding: 20px;
+}
+
+.tab-group{
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+}
+
+mat-icon{
+  color: #BA005C;
+  cursor: pointer;
+}
+mat-icon:hover{
+  transform: scale(1.5);
+}
+
+.unbookmarked{
+  color: #f68c8c;
+  cursor: pointer;
+}
+
+.bookmarked{
+  color: #BA005C;
+  cursor: pointer;
+}
+
+.mat-chip-list .mat-chip {
+  width: auto;
+  min-width: 0;
+}
+
+.mt{
+  transform: scale(2);
+  margin-top: 10px;
+}
+
+.ml{
+  margin-left: 15px;
+}
+
+.custom-row {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+

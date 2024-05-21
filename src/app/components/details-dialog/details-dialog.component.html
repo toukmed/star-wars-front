@@ -1,0 +1,35 @@
+<div class="film-details">
+  <div *ngIf="data['type'] === 'film'">
+    <h1>{{ data['element'].title }}</h1>
+    <p><strong>Episode ID:</strong> {{ data['element'].episode_id }}</p>
+    <p><strong>Director:</strong> {{ data['element'].director }}</p>
+    <p><strong>Producer:</strong> {{ data['element'].producer }}</p>
+    <p><strong>Release Date:</strong> {{ data['element'].release_date }}</p>
+    <p><strong>Opening Crawl:</strong></p>
+    <p>{{ data['element'].opening_crawl }}</p>
+  </div>
+  <div *ngIf="data['type'] === 'vehicle'">
+    <h1>{{ data['element'].name }}</h1>
+    <p><strong>Model:</strong> {{ data['element'].model }}</p>
+    <p><strong>Manufacturer:</strong> {{ data['element'].manufacturer }}</p>
+    <p><strong>Cost in credits:</strong> {{ data['element'].cost_in_credits }}</p>
+    <p><strong>Length:</strong> {{ data['element'].length }}</p>
+    <p><strong>Max atmosphering speed:</strong> {{ data['element'].max_atmosphering_speed }}</p>
+    <p><strong>Crew:</strong> {{ data['element'].crew }}</p>
+    <p><strong>Passengers:</strong> {{ data['element'].passengers }}</p>
+    <p><strong>Cargo capacity:</strong> {{ data['element'].cargo_capacity }}</p>
+    <p><strong>Consumables:</strong> {{ data['element'].consumables }}</p>
+    <p><strong>Vehicle class:</strong> {{ data['element'].vehicle_class }}</p>
+  </div>
+  <div *ngIf="data['type'] === 'people'">
+    <h1>{{ this.data['element'].name }}</h1>
+    <p><strong>Height:</strong> {{ this.data['element'].height }}</p>
+    <p><strong>Mass:</strong> {{ this.data['element'].mass }}</p>
+    <p><strong>Hair color:</strong> {{ this.data['element'].hair_color }}</p>
+    <p><strong>Skin color:</strong> {{ this.data['element'].skin_color }}</p>
+    <p><strong>Eye color:</strong> {{ this.data['element'].eye_color }}</p>
+    <p><strong>Birth year:</strong> {{ this.data['element'].birth_year }}</p>
+    <p><strong>Gender:</strong> {{ this.data['element'].gender }}</p>
+  </div>
+
+</div>

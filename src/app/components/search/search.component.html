@@ -1,0 +1,125 @@
+<div class="tab-group">
+  <mat-tab-group>
+    <mat-tab label="Swapi based data">
+      <div class="search-container">
+        <mat-form-field class="search-field" appearance="fill">
+          <input matInput #searchBox class="input-container" placeholder="Search people by their names">
+        </mat-form-field>
+      </div>
+      <div class="table-container">
+        <mat-paginator [length]="totalElements"
+                       [pageSize]="pageSize"
+                       [pageSizeOptions]="[10, 25, 100]"
+                       (page)="nextPage($event)"
+                       aria-label="Select page">
+        </mat-paginator>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+          <!-- Columns Definitions -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name</th>
+            <td mat-cell *matCellDef="let element"> {{ element.name }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="birth_year">
+            <th mat-header-cell *matHeaderCellDef> Birth year</th>
+            <td mat-cell *matCellDef="let element"> {{ element.birthYear }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="films">
+            <th mat-header-cell *matHeaderCellDef> Films</th>
+            <td mat-cell *matCellDef="let element">
+              <mat-chip-list aria-label="Films selection" class="mat-chip-list-stacked">
+                <mat-chip *ngFor="let item of element.films" color="primary" (click)="fetchDetails(item, 'film')">{{ item }}</mat-chip>
+              </mat-chip-list>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="vehicles">
+            <th mat-header-cell *matHeaderCellDef> Vehicles</th>
+            <td mat-cell *matCellDef="let element">
+              <mat-chip-list aria-label="Vehicles selection" class="mat-chip-list-stacked">
+                <mat-chip  *ngFor="let item of element.vehicles" (click)="fetchDetails(item, 'vehicle')">{{ item }}</mat-chip>
+              </mat-chip-list>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="bookmark">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+              <mat-icon (click)="bookmark(element)">
+                {{element.bookmarked === true ? '' : 'bookmark_add'}}
+              </mat-icon>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+    </mat-tab>
+    <mat-tab label="Bookmarked data">
+      <div class="search-container">
+        <mat-form-field class="search-field" appearance="fill">
+          <input matInput (input)="searchDbByName($event.target.value)" class="input-container" placeholder="Search people by their names">
+        </mat-form-field>
+      </div>
+      <div class="table-container">
+        <mat-paginator [length]="dbBasedPeople.length"
+                       [pageSize]="pageSize"
+                       [pageSizeOptions]="[10, 25, 100]"
+                       (page)="nextPage($event)"
+                       aria-label="Select page">
+        </mat-paginator>
+        <table mat-table [dataSource]="dbBaseddataSource" class="mat-elevation-z8">
+
+          <!-- Columns Definitions -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name</th>
+            <td mat-cell *matCellDef="let element"> {{ element.name }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="birth_year">
+            <th mat-header-cell *matHeaderCellDef> Birth year</th>
+            <td mat-cell *matCellDef="let element"> {{ element.birthYear }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="films">
+            <th mat-header-cell *matHeaderCellDef> Films</th>
+            <td mat-cell *matCellDef="let element">
+              <mat-chip-list aria-label="Films selection" class="mat-chip-list-stacked">
+                <mat-chip *ngFor="let item of element.films.split(',')" color="primary">{{ item }}</mat-chip>
+              </mat-chip-list>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="vehicles">
+            <th mat-header-cell *matHeaderCellDef> Vehicles</th>
+            <td mat-cell *matCellDef="let element">
+              <mat-chip-list aria-label="Vehicles selection" class="mat-chip-list-stacked">
+                <div *ngIf="element.vehicles">
+                  <mat-chip *ngFor="let item of element.vehicles.split(',')">{{ item }}</mat-chip>
+                </div>
+              </mat-chip-list>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="bookmark">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+              <mat-icon (click)="unbookmark(element)">bookmark_remove
+              </mat-icon>
+              <mat-icon (click)="fetchDetails(element, 'people')" class="ml">zoom_in
+              </mat-icon>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row [ngClass]="{'custom-row': true}" *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+
+
