@@ -9,6 +9,7 @@ export class Person {
   public skinColor: String;
   public mass: String;
   public films: String[];
+  public filmss: Film[];
   public vehicles: string[];
   public bookmarked: boolean = false;
 }

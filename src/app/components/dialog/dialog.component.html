@@ -1,6 +1,6 @@
 <h2 mat-dialog-title>Confirmation</h2>
 <mat-dialog-content class="mat-typography">
-  <p>Are you sure you want to boomark<b> {{data.name}} </b> ?</p>
+  <p>Are you sure you want to {{ data['action'] }}<b> {{data.name}} </b> ?</p>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button [mat-dialog-close]=false mat-raised-button color="primary">Cancel</button>
