@@ -37,7 +37,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.enableNamesFetchFlag = true;
+    this.enableNamesFetchFlag = false;
     this.searchDbByName();
     this.searchPeople();
   }
@@ -109,24 +109,30 @@ export class SearchComponent implements OnInit, AfterViewInit {
     this.pageEvent = event;
     this.pageSize = event.pageSize;
     this.pageNo = event.pageIndex;
+    console.log(this.pageNo)
     this.searchPeople(this.searchBox.nativeElement.value + '&page=' + this.pageNo);
   }
 
-  bookmark(event: any) {
-    this.dialog.open(DialogComponent, {
-      data: {
-        person: event,
-        action: 'bookmark'
-      },
-      disableClose: true,
-    }).afterClosed().subscribe(() => {
-      this.dataSource.data.forEach(person => {
-        if (person.name === event.name) {
-          person.bookmarked = true;
+  bookmark(event: any, bookmarked: boolean) {
+    if(!bookmarked){
+      this.dialog.open(DialogComponent, {
+        data: {
+          person: event,
+          action: 'bookmark'
+        },
+        disableClose: true,
+      }).afterClosed().subscribe((data) => {
+        if(data === undefined){
+          this.dataSource.data.forEach(person => {
+            if (person.name === event.name) {
+              person.bookmarked = true;
+            }
+          });
+          this.searchDbByName();
         }
-      });
-      this.searchDbByName();
-    })
+
+      })
+    }
   }
 
   unbookmark(event: any) {
