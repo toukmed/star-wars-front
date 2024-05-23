@@ -1,12 +1,18 @@
 # StarWarsFront
 The idea behind the project is to manage the library of star wars data exposed on (https://swapi.dev/) in order to bookmark a selected set of element and save them in database.
 The UI is composed of a search page that has two tabs:
-  - The first one: Swapi based data, exposes the data fetched from swapi api where we display character informations like the name, the birth year and films and vehicles where they have participated.
+  - The first one: Swapi based data, exposes the data fetched from swapi Rest api using where we display character informations like the name, the birth year and films and vehicles where they have participated.
   - The second one: bookmarked data, exposes the list of bookmarked data.
   - A search feature that search the characters by their names
   - A bookmark/unbookmark features that saves selected data into database.
   - A see details features that displays the full informations about the character, film and vehicle.
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.4.
+    
+This project was generated with [Angular CLI]
+  - (https://github.com/angular/angular-cli) version 11.1.4.
+  - Angular material for UI componement version 11.2.13.
+  - Apollo client version 3.0.0.
+  - Apollo angular version 2.6.0.
+
 
 ## Development server
 
@@ -19,7 +25,3 @@ Run `ng generate component component-name` to generate a new component. You can 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Graphql client
-
-The graphql client used to process request is Apollo client (https://www.apollographql.com/docs/)
